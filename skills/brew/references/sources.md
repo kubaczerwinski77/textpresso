@@ -11,7 +11,9 @@ is since the resolved lookback.** Keep outputs tight AND capture the data needed
 
 - **Jira site** — Atlassian `getAccessibleAtlassianResources` → resource `url`
   (e.g. `https://livechatinc.atlassian.net`). Use for `…/browse/<KEY>` links and as the cloudId source.
-- **Slack** — `slack.workspace` builds permalinks (`https://<workspace>.slack.com/…`);
+- **Slack** — prefer permalinks straight from `slack_search_public` (it returns ready links,
+  including the `?thread_ts=…` thread form). `slack.workspace` is only the **fallback** for
+  hand-building permalinks in **private** channels (search_public can't see them).
   `slack.me` (your member ID) finds mentions.
 
 ## yesterday — what you did
@@ -48,13 +50,22 @@ Per report-format: In Review → REVIEW QUEUE; standout In Progress → STANDUP.
 
 ## slack — signal only
 
-Cap: last 50 msgs/channel or since lookback, whichever is smaller. Summaries, not transcripts.
-For every item you surface, keep its `channelId` + `ts` so you can build a permalink (see Identifiers).
+Cap: ~50 msgs/channel or since lookback, whichever is smaller. Summaries, not transcripts.
 
+**Get permalinks from `slack_search_public`** — it returns ready-made links (including the
+`?thread_ts=…&cid=…` thread form), so don't hand-build them for public channels.
+
+- **Public channels** (alerts / news + any public team channel) — discover per channel with
+  `slack_search_public`: `in:<#CHANNELID> after:<lookback-date>`, `sort=timestamp`. Each result
+  carries its own `Permalink:` — use it directly.
+- **Private channels** (🔒, e.g. `C08CJACGHH9` / `C08F2QH4PQD`) — `search_public` can't see them.
+  Read with `slack_read_channel`, then construct the permalink from `channelId` + `ts` +
+  `slack.workspace` (see Identifiers). Don't use `search_public_and_private` — it needs user consent.
 - **Mentions** — `slack_search_public` with `to:me` plus your member id `<slack.me>`, after lookback.
-- **`slack.alerts[]`** — incidents / errors / regressions → **⚠️ Raise**. Capture any Sentry/PR URL in the text.
-- **`slack.team[]`** — high-signal only: decisions, questions aimed at the team, threads needing you.
-- **`slack.news[]`** — shared links, announcements, events.
+
+Per bucket: **alerts[]** → incidents / errors / regressions (capture any Sentry/PR URL in the text)
+→ **⚠️ Raise**; **team[]** → decisions, questions aimed at the team, threads needing you;
+**news[]** → shared links, announcements, events.
 
 ## ci — pipeline health
 
