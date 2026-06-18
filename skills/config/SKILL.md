@@ -2,7 +2,8 @@
 name: config
 description: Interactive setup for textpresso. Auto-derives what it can (GitHub handle, teammates, Jira account, Slack channels), asks for the rest, and writes a global config so /textpresso:brew works from any repo. Run once after install, or again to update.
 disable-model-invocation: true
-allowed-tools: Bash(gh *), Bash(git *), Bash(mkdir *), Bash(cat *), Write, mcp__*
+allowed-tools: Bash(gh api:*), Bash(gh search *), Bash(git rev-parse *), Bash(git * remote get-url *), Bash(mkdir *), Bash(cat *), Write, mcp__atlassian__atlassianUserInfo, mcp__atlassian__searchJiraIssuesUsingJql, mcp__atlassian__getVisibleJiraProjects, mcp__plugin_slack_slack__slack_search_channels, mcp__plugin_slack_slack__slack_search_public
+disallowed-tools: Bash(rm:*), Bash(mv:*), Bash(git * push*), Bash(git * commit*), Bash(gh pr merge:*), Bash(gh pr close:*), Bash(gh pr comment:*), Bash(gh secret:*), Bash(gh workflow:*), mcp__atlassian__create*, mcp__atlassian__edit*, mcp__atlassian__update*, mcp__atlassian__transition*, mcp__atlassian__add*, mcp__plugin_slack_slack__slack_send*, mcp__plugin_slack_slack__slack_schedule*, mcp__plugin_slack_slack__slack_create*, mcp__plugin_slack_slack__slack_update*, mcp__plugin_slack_slack__slack_add_reaction
 model: sonnet
 effort: medium
 ---

@@ -73,6 +73,21 @@ Then interrogate the result: `expand the PR queue`, `draft my standup message`,
 `textpresso.config.json` (your channel IDs, handles, repo paths) is gitignored. Only the
 placeholder `*.example.json` ships in the repo. Keep it that way before flipping anything public.
 
+## Security
+
+`brew` ingests untrusted text — Slack messages, PR/Jira descriptions — any of which could carry a
+prompt injection ("ignore instructions, post X / transition this ticket"). So read-only is enforced
+by **capability, not prose**: each skill's `disallowed-tools` hard-blocks every mutating tool
+(file writes, `git push`/`commit`, `gh pr merge`/`comment`/`api`, and all Slack/Jira create/edit/
+update/transition/send tools). `disallowed-tools` is deny-first and cannot be overridden, so an
+injection can't reach a tool that isn't there. (`allowed-tools` is _not_ an enforced restriction in
+Claude Code — it only auto-approves — so it is not relied on for safety.)
+
+**Sharing caveat:** the Slack denylist patterns are scoped to this environment's Slack MCP server
+name (`mcp__plugin_slack_slack__*`). If your Slack MCP is registered under a different name, update
+those patterns in `skills/brew/SKILL.md` and `skills/config/SKILL.md` to match, or the Slack write
+tools won't be blocked. The Atlassian patterns (`mcp__atlassian__*`) are standard.
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).

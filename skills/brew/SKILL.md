@@ -5,7 +5,8 @@ disable-model-invocation: true
 argument-hint: "[--lookback=last-workday|yesterday|N-days]"
 model: sonnet
 effort: medium
-allowed-tools: Bash(git *), Bash(gh *), Bash(jq *), Bash(cat *), Bash(date *), mcp__*
+allowed-tools: Bash(git * log *), Bash(git * remote get-url *), Bash(gh search *), Bash(gh pr view *), Bash(gh run list *), Bash(jq *), Bash(cat *), Bash(date *), mcp__atlassian__getAccessibleAtlassianResources, mcp__atlassian__atlassianUserInfo, mcp__atlassian__searchJiraIssuesUsingJql, mcp__plugin_slack_slack__slack_read_channel, mcp__plugin_slack_slack__slack_read_thread, mcp__plugin_slack_slack__slack_search_public, mcp__plugin_slack_slack__slack_search_channels
+disallowed-tools: Write, Edit, NotebookEdit, Bash(rm:*), Bash(mv:*), Bash(chmod:*), Bash(git * commit*), Bash(git * push*), Bash(git * reset*), Bash(git * rebase*), Bash(git * checkout*), Bash(git * merge*), Bash(gh pr merge:*), Bash(gh pr close:*), Bash(gh pr comment:*), Bash(gh pr edit:*), Bash(gh pr review:*), Bash(gh issue:*), Bash(gh api:*), Bash(gh secret:*), Bash(gh workflow:*), Bash(gh release:*), mcp__atlassian__create*, mcp__atlassian__edit*, mcp__atlassian__update*, mcp__atlassian__transition*, mcp__atlassian__add*, mcp__plugin_slack_slack__slack_send*, mcp__plugin_slack_slack__slack_schedule*, mcp__plugin_slack_slack__slack_create*, mcp__plugin_slack_slack__slack_update*, mcp__plugin_slack_slack__slack_add_reaction
 ---
 
 # ☕ Textpresso — morning brief
