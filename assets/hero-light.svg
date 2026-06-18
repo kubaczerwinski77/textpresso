@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="textpresso — your morning shot of engineering signal">
+  <rect x="1" y="1" width="718" height="198" rx="16" fill="#FFFFFF" stroke="#ECECEC" stroke-width="2"/>
+  <text x="48" y="44" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#FF4438">CLAUDE CODE PLUGIN</text>
+  <text x="44" y="116" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#1A1A1A">textpresso</text>
+  <rect x="48" y="130" width="300" height="8" rx="4" fill="#FF4438"/>
+  <text x="48" y="172" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#5B5B5B">your morning shot of engineering signal</text>
+  <g stroke="#FF4438" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M598 64 q-9 -13 0 -26"/>
+    <path d="M620 64 q-9 -13 0 -26"/>
+    <rect x="582" y="84" width="64" height="52" rx="10"/>
+    <path d="M646 96 q26 8 0 34"/>
+  </g>
+  <rect x="572" y="140" width="86" height="8" rx="4" fill="#FF4438"/>
+</svg>
