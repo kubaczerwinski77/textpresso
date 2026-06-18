@@ -1,0 +1,17 @@
+{
+  "lookback": "last-workday",
+  "github": {
+    "me": "your-gh-handle",
+    "team": ["teammate-one", "teammate-two"],
+    "repos": ["/absolute/path/to/your/repo"]
+  },
+  "jira": {
+    "account": "your-jira-account-id",
+    "team": "your-team-uuid-or-name"
+  },
+  "slack": {
+    "alerts": ["C0ALERTCHANNELID"],
+    "team": ["C0TEAMCHANNELID"],
+    "news": ["C0NEWSCHANNELID"]
+  }
+}

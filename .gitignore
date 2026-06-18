@@ -1,0 +1,5 @@
+# Your real config — channel IDs, handles, repo paths. Never commit.
+textpresso.config.json
+
+.DS_Store
+*.log

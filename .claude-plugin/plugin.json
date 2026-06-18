@@ -1,0 +1,13 @@
+{
+  "name": "textpresso",
+  "description": "Your morning engineering briefing — yesterday's work, PR review queue, Slack signal, prod alerts and CI health in one standup-ready report. Read-only.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jakub Czerwiński",
+    "url": "https://github.com/kubaczerwinski77"
+  },
+  "homepage": "https://github.com/kubaczerwinski77/textpresso",
+  "repository": "github.com/kubaczerwinski77/textpresso",
+  "license": "MIT",
+  "keywords": ["standup", "briefing", "slack", "github", "morning", "productivity"]
+}
