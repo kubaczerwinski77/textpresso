@@ -76,7 +76,11 @@ Don't pin Opus; the work is tool-calling plus light synthesis.
 - **Add a source:** add a block to `sources.md`, add an additive config key, let the gather step
   pick it up. Usually no `SKILL.md` change.
 - **Release:** bump `version` in `.claude-plugin/plugin.json`, then `git tag vX.Y.Z` + push +
-  `gh release create`. `/plugin install` users track releases, not HEAD.
+  `gh release create`. Release title is `textpresso X.Y.Z` — lowercase, no emoji, no tagline.
+  `/plugin install` users track releases, not HEAD.
+- **Naming:** the canonical name is lowercase `textpresso`. Keep `☕` and `Textpresso` branding to
+  user-facing surfaces only (README header, the `brew` report banner) — never in technical
+  artifacts (release titles, tags, manifest, commits).
 - **Commits:** conventional commits (`feat:` `fix:` `docs:` `security:` `style:`). No Jira keys
   (personal repo).
 
