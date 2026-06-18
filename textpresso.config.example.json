@@ -7,7 +7,8 @@
   },
   "jira": {
     "account": "your-jira-account-id",
-    "team": "your-team-uuid-or-name"
+    "project": "your-jira-project-key",
+    "team": "your-team-field-uuid"
   },
   "slack": {
     "workspace": "your-workspace-subdomain",

@@ -6,12 +6,23 @@ walk into daily remembering everything you shipped and every fire worth raising.
 
 Read-only by design: it gathers and synthesizes, it never sends or mutates.
 
+**What lands in the briefing**
+
+- 🎯 **Standup talking points**, synthesized first — shipped · in-flight · fires to raise · what you owe
+- 📋 yesterday's merged PRs + moved tickets
+- 👀 PR review queue — yours and the team's
+- 🚨 prod alerts, CI failures, security CVEs
+- 💬 the Slack threads that actually need you
+- 📰 demos, launches, news worth knowing
+
+Every PR, ticket, and Slack message is an **inline link** — click straight to the source.
+
 ## Requirements
 
-- **Claude Code** with plugin support
+- **Claude Code** with plugin support (v2.1.176+ — needed for the read-only `disallowed-tools` enforcement)
 - **`gh` CLI**, authenticated (`gh auth login`) — PR queue, merged PRs, CI runs
 - **Slack MCP** connected — channel signal + mentions
-- **Atlassian MCP** connected — Jira transitions _(optional; omit the `jira` config key to skip)_
+- **Atlassian MCP** connected — your Jira issue status + team board, read-only _(optional; omit the `jira` key to skip)_
 
 ## Install
 
@@ -22,7 +33,7 @@ claude /plugin install github:kubaczerwinski77/textpresso
 Dev/test from a local clone before pushing:
 
 ```bash
-claude --plugin-dir ~/Text/textpresso
+claude --plugin-dir /path/to/textpresso
 ```
 
 ## Configure
@@ -53,10 +64,10 @@ cp textpresso.config.example.json textpresso.config.json
 /textpresso:brew
 ```
 
-Optionally pass a config path or lookback override:
+Optionally override the lookback window:
 
 ```
-/textpresso:brew ./textpresso.config.json --lookback=yesterday
+/textpresso:brew --lookback=yesterday
 ```
 
 Then interrogate the result: `expand the PR queue`, `draft my standup message`,
