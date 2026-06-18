@@ -16,5 +16,13 @@
     "alerts": ["C0ALERTCHANNELID"],
     "team": ["C0TEAMCHANNELID"],
     "news": ["C0NEWSCHANNELID"]
+  },
+  "sections": {
+    "standup": true,
+    "yesterday": true,
+    "review": { "fresh": true, "team": true, "yours": true },
+    "prod-ci": { "ci": true, "errors": true, "security": true },
+    "slack": { "alerts": true, "team": true, "news": true, "mentions": true },
+    "interesting": true
   }
 }

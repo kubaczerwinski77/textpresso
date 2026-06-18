@@ -4,6 +4,9 @@ One block per source; the gather step runs only the blocks whose config key exis
 is since the resolved lookback.** Keep outputs tight AND capture the data needed for inline links
 (PR `url`, Slack `channelId` + `ts`, Jira keys). The caps below keep a run cheap.
 
+**Visibility gate:** before gathering, drop any source whose section or subsection is hidden by
+`config.sections` (see report-format.md → Section visibility). Don't fetch what won't render.
+
 > gh flags vary by version. If a flag is rejected, fall back to the raw query form, e.g.
 > `gh search prs "author:@me is:merged merged:>=<date>"`.
 

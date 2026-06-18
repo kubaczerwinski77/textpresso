@@ -1,6 +1,6 @@
 ---
 name: config
-description: Interactive setup for textpresso. Auto-derives what it can (GitHub handle, teammates, Jira account, Slack channels), asks for the rest, and writes a global config so /textpresso:brew works from any repo. Run once after install, or again to update.
+description: Interactive setup and editor for textpresso. Auto-derives what it can (GitHub handle, teammates, Jira account, Slack channels), asks for the rest, and writes a global config so /textpresso:brew works from any repo. Also edits an existing config from natural-language commands — including hiding/showing report sections. Run after install, or any time to update.
 disable-model-invocation: true
 allowed-tools: Bash(gh api:*), Bash(gh search *), Bash(git rev-parse *), Bash(git * remote get-url *), Bash(mkdir *), Bash(cat *), Write, mcp__atlassian__atlassianUserInfo, mcp__atlassian__searchJiraIssuesUsingJql, mcp__atlassian__getVisibleJiraProjects, mcp__plugin_slack_slack__slack_search_channels, mcp__plugin_slack_slack__slack_search_public
 disallowed-tools: Bash(rm:*), Bash(mv:*), Bash(git * push*), Bash(git * commit*), Bash(gh pr merge:*), Bash(gh pr close:*), Bash(gh pr comment:*), Bash(gh secret:*), Bash(gh workflow:*), mcp__atlassian__create*, mcp__atlassian__edit*, mcp__atlassian__update*, mcp__atlassian__transition*, mcp__atlassian__add*, mcp__plugin_slack_slack__slack_send*, mcp__plugin_slack_slack__slack_schedule*, mcp__plugin_slack_slack__slack_create*, mcp__plugin_slack_slack__slack_update*, mcp__plugin_slack_slack__slack_add_reaction
@@ -17,8 +17,13 @@ the value instead. Never hard-fail.
 
 ## 0. Existing config?
 
-If `$HOME/.config/textpresso/config.json` already exists, print it and ask: **overwrite**,
-**edit one section**, or **cancel**. Don't clobber silently.
+If `$HOME/.config/textpresso/config.json` already exists, print it and ask what to do:
+**overwrite** (full setup), **edit** (change a field or the layout), or **cancel**. Don't clobber silently.
+
+**Natural-language edits.** On the edit path, accept plain-language commands and apply them to the
+config, then write it back — e.g. "hide the interesting section", "turn off Slack news but keep
+alerts", "only show standup and review", "add channel C0… to alerts", "look back 3 days". Map
+layout requests to the `sections` schema in step 5. Show the change, confirm, write.
 
 ## 1. GitHub (auto)
 
@@ -58,7 +63,26 @@ Then, for each bucket — **alerts / team / news** — help the user choose chan
 
 Confirm the default `last-workday`, or take an override (`yesterday` | `N-days`).
 
-## 5. Write
+## 5. Sections / layout (optional)
+
+By default every section shows. Ask whether any are noise for this user, and write a `sections`
+map (omit it entirely to keep the v0.1.0 default of everything-on). A section can be `true` (show),
+`false` (hide), or an object toggling its subsections:
+
+```jsonc
+"sections": {
+  "standup": true, "yesterday": true, "interesting": false,
+  "review":  { "fresh": true, "team": true, "yours": false },
+  "prod-ci": { "ci": true, "errors": true, "security": true },
+  "slack":   { "alerts": true, "team": false, "news": false, "mentions": true }
+}
+```
+
+Rules: absent section or `true`/`{}` = shown; `false` = hidden; object = shown with the listed
+subsections off. Canonical keys live in `report-format.md` → Section visibility. Hidden sections
+aren't gathered, so trimming also saves tokens.
+
+## 6. Write
 
 - `mkdir -p $HOME/.config/textpresso`
 - Write the assembled JSON to `$HOME/.config/textpresso/config.json`. Include **only** the keys
@@ -69,4 +93,5 @@ Confirm the default `last-workday`, or take an override (`yesterday` | `N-days`)
 ## Notes
 
 - This config lives outside any repo. It's never committed — safe by construction.
-- Re-run this skill any time to update scope; it's idempotent (see step 0).
+- Re-run this skill any time to update scope or layout; it's idempotent (see step 0).
+- `brew` is read-only and can't write config — all changes (including hiding sections) flow through this skill.

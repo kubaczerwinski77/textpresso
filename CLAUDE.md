@@ -80,8 +80,14 @@ Don't pin Opus; the work is tool-calling plus light synthesis.
 - **Commits:** conventional commits (`feat:` `fix:` `docs:` `security:` `style:`). No Jira keys
   (personal repo).
 
-## Active direction
+## Implemented features
 
-**Per-user section visibility** — some users want fewer sections; the full set is noise for them.
-Plan: config-driven section control, default = everything visible so existing v0.1.0 configs are
-untouched. Additive and backward-compatible (principle #3). Design the schema before implementing.
+- **Section visibility** (`config.sections`) — two-level (section + subsection) show/hide map,
+  default = all on (backward-compatible). Edited via `/textpresso:config` in natural language;
+  hidden sections are skipped at gather time. Schema in `report-format.md` → Section visibility.
+
+## Backlog
+
+DX portal / richer CI · multi-repo (config `repos` already an array) · subagent fan-out per source
+(speed + lean context) · optional draft-and-send behind confirmation. All must stay additive and
+backward-compatible (principle #3).

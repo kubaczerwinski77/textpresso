@@ -73,6 +73,15 @@ Optionally override the lookback window:
 Then interrogate the result: `expand the PR queue`, `draft my standup message`,
 `who else should review <PR>`. (Drafting is fine; sending is never automatic.)
 
+## Customize what shows
+
+Some sections might be noise for you. Tell `/textpresso:config` in plain language — _"hide the
+interesting section"_, _"turn off Slack news but keep alerts"_, _"only standup and review"_ — and it
+updates your config. Under the hood it's an optional `sections` map (see
+`textpresso.config.example.json`): each section is `true`, `false`, or an object toggling its
+subsections (`review`, `prod-ci`, `slack`). Omit it and everything shows. Hidden sections aren't
+even gathered, so trimming saves tokens too.
+
 ## Extending
 
 - **New channel** — add its ID to the right `slack` group. No code change.

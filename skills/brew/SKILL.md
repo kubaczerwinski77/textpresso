@@ -32,7 +32,9 @@ Override via config `lookback` or the `--lookback` flag (`yesterday` | `N-days`)
 ## 3. Gather — in parallel, bounded
 
 Read `references/sources.md` for the exact command/query per source. **Run only the sources
-present in config** (a missing `slack`/`jira`/`ci` key = that section is skipped). Issue the
+present in config** (a missing `slack`/`jira`/`ci` key = that section is skipped), and **skip any
+section or subsection hidden by `config.sections`** (see `references/report-format.md` → Section
+visibility) — don't gather what won't render. Issue the
 independent calls in ONE message so they run concurrently. Respect the caps in `sources.md`
 (top-N per channel, since-lookback only) — bounded reads are what keep a run token-light.
 

@@ -55,6 +55,24 @@ the whole section (don't print "nothing").
 
 **📰 INTERESTING** — events / launches / news, one line each, linked.
 
+## Section visibility
+
+`brew` honors an optional `sections` map in config. Resolution:
+
+- no `sections` key → show everything (the v0.1.0 default).
+- a section absent, or `true`, or `{}` → shown (all subsections).
+- a section set to `false` → omitted entirely.
+- a section as an object → shown, but any subsection set to `false` is omitted (absent / `true` = shown).
+
+Canonical keys (also the render order):
+
+- `standup`, `yesterday`, `interesting` — section-level only.
+- `review` → `fresh`, `team`, `yours`
+- `prod-ci` → `ci`, `errors`, `security`
+- `slack` → `alerts`, `team`, `news`, `mentions`
+
+**Hidden sections/subsections are not gathered** (see `sources.md`) — skipping a source also skips its tokens.
+
 ## Trimming rules
 
 - Omit any empty section entirely. Never print "nothing here".
