@@ -20,6 +20,9 @@ returned nothing. Keep bullets terse — this is a glance-and-go briefing.
   • Team:     <title — status — link>
   • Yours:    <title — reviewDecision — ⏳ stale? — link>
 
+🧭 TEAM WORK (Jira)
+  • <key — summary — assignee — status>
+
 💬 SLACK — needs attention
   • Mentions: <who / where / one-line gist>
   • Team:     <high-signal threads only>

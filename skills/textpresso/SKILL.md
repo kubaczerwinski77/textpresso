@@ -28,7 +28,7 @@ present in config** (a missing `slack`/`jira`/`ci` key = that section is skipped
 independent calls in ONE message so they run concurrently. Respect the caps in `sources.md`
 (top-N per channel, since-lookback only) — bounded reads are what keep a run token-light.
 
-Sources: `yesterday` (git + gh + jira) · `pr-queue` (gh) · `slack` (alerts / team / news) · `ci` (gh actions).
+Sources: `yesterday` (git + gh + jira) · `jira-team` (Atlassian MCP) · `pr-queue` (gh) · `slack` (alerts / team / news) · `ci` (gh actions).
 
 ## 4. Synthesize
 

@@ -16,6 +16,15 @@ the difference between a snappy, cheap run and a token blowout.
 - **Jira moved** — Atlassian MCP: issues where `assignee = jira.account` updated since lookback;
   report status transitions only.
 
+## jira-team — what the team's working on
+
+Uses `jira.project` + `jira.team`. Atlassian MCP with JQL (cap ~20, return key / summary / assignee / status):
+
+`project = <jira.project> AND cf[10500] = "<jira.team>" AND statusCategory = "In Progress" ORDER BY updated DESC`
+
+Bonus context — issues the team moved to Done since lookback:
+`project = <jira.project> AND cf[10500] = "<jira.team>" AND status CHANGED TO Done AFTER "<lookback>"`
+
 ## pr-queue — needs review
 
 - **For you** — `gh search prs --review-requested=@me --state=open --json title,url,author,repository,updatedAt -L 30`
