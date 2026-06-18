@@ -39,7 +39,13 @@ If `$HOME/.config/textpresso/config.json` already exists, print it and ask: **ov
 
 ## 3. Slack (interactive)
 
-For each bucket — **alerts / team / news** — help the user choose channels:
+First capture two values used for inline links + mention detection:
+
+- **`workspace`** — the subdomain in any Slack permalink (`https://<workspace>.slack.com/…`). Run
+  one `slack_search_public` and read it off the returned permalink. Confirm.
+- **`me`** — your Slack member ID (`slack_search_public` reports the current user's id). Capture it.
+
+Then, for each bucket — **alerts / team / news** — help the user choose channels:
 
 - Ask what to search (e.g. "alerts", "app-core"), call Slack MCP `search_channels`, show each
   result as `name — ID`, and let them pick which belong in this bucket. Repeat until the bucket

@@ -10,6 +10,8 @@
     "team": "your-team-uuid-or-name"
   },
   "slack": {
+    "workspace": "your-workspace-subdomain",
+    "me": "UXXXXXXXX",
     "alerts": ["C0ALERTCHANNELID"],
     "team": ["C0TEAMCHANNELID"],
     "news": ["C0NEWSCHANNELID"]
