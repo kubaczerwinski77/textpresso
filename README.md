@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg" />
-  <img alt="textpresso — your morning shot of engineering signal" src="assets/hero-light.svg" width="720" />
+  <img alt="textpresso — your standup, brewed before you sit down" src="assets/hero-light.svg" width="720" />
 </picture>
 
 <p>
