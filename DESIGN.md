@@ -21,21 +21,28 @@ regressions that should be raised. One trigger should reconstruct the picture.
 
 ## Architecture
 
-Plugin repo → one skill (`disable-model-invocation: true`, user-triggered). SKILL.md is a thin
-orchestrator; per-source recipes and the report layout live in `references/` and load at runtime.
+Plugin repo → two skills (`disable-model-invocation: true`, user-triggered):
+
+- **`config`** — interactive setup; auto-derives via gh / Jira / Slack, writes the global config.
+- **`brew`** — the briefing; thin orchestrator, per-source recipes + report layout in `references/`.
 
 ```
 textpresso/
 ├── .claude-plugin/plugin.json
-├── skills/textpresso/
-│   ├── SKILL.md                 # lean orchestrator (gather → synthesize → render)
-│   └── references/
-│       ├── sources.md           # exact command/query per source, with caps
-│       └── report-format.md     # output layout + synthesis rules
+├── skills/
+│   ├── config/SKILL.md          # interactive setup → ~/.config/textpresso/config.json
+│   └── brew/
+│       ├── SKILL.md             # lean orchestrator (gather → synthesize → render)
+│       └── references/
+│           ├── sources.md       # exact command/query per source, with caps
+│           └── report-format.md # output layout + synthesis rules
 ├── textpresso.config.example.json
-├── textpresso.config.json       # real config (gitignored)
+├── textpresso.config.json       # real config (gitignored; cwd-local)
 ├── README.md / LICENSE / .gitignore
 ```
+
+Config resolution (`brew`): `$1` path → `./textpresso.config.json` → `~/.config/textpresso/config.json`.
+The global path is what lets `brew` run from any repo; `config` is what writes it.
 
 ## Run sequence
 

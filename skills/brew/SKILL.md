@@ -1,5 +1,5 @@
 ---
-name: textpresso
+name: brew
 description: Your morning engineering briefing. Pulls yesterday's work, the PR review queue, Slack signal, prod alerts and CI health into one standup-ready report. Read-only — gathers and synthesizes, never sends. Invoke explicitly each morning.
 disable-model-invocation: true
 argument-hint: "[config-path] [--lookback=last-workday|yesterday|N-days]"
@@ -12,9 +12,14 @@ Read-only orchestration: **gather → synthesize standup talking points → rend
 
 ## 1. Load config
 
-Read `textpresso.config.json` (or the path passed as `$1`). If missing or invalid, print the
-`textpresso.config.example.json` template and stop. **Never invent channel IDs or handles** —
-only use what the config provides.
+Resolve the config in this order, first hit wins:
+
+1. explicit path passed as `$1`
+2. `./textpresso.config.json` (current working dir)
+3. `$HOME/.config/textpresso/config.json` (global default, written by `/textpresso:config`)
+
+If none exists or the JSON is invalid, tell the user to run `/textpresso:config` and stop.
+**Never invent channel IDs or handles** — only use what the config provides.
 
 ## 2. Resolve lookback
 

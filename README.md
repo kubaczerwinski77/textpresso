@@ -27,41 +27,36 @@ claude --plugin-dir ~/Text/textpresso
 
 ## Configure
 
-Copy the example and fill in your scope. Your real config is gitignored — safe in a public repo.
+Run the setup skill once — it auto-derives what it can (GitHub handle, teammates, Jira account,
+Slack channels), asks for the rest, and writes a **global** config:
+
+```
+/textpresso:config
+```
+
+It writes to `~/.config/textpresso/config.json`, so `/textpresso:brew` then works from **any**
+repo with no arguments.
+
+Prefer to do it by hand? Copy the example and fill it in (gitignored — safe in a public repo):
 
 ```bash
 cp textpresso.config.example.json textpresso.config.json
 ```
 
-```jsonc
-{
-  "lookback": "last-workday", // Mon → scans Fri; else yesterday
-  "github": {
-    "me": "your-gh-handle",
-    "team": ["teammate-one"], // teammate handles for the team PR queue
-    "repos": ["/abs/path/to/repo"], // absolute paths — used for git log + CI
-  },
-  "jira": { "account": "your-id", "team": "your-team" },
-  "slack": {
-    "alerts": ["C0..."], // incident/alert channels → prod issues
-    "team": ["C0..."], // team channels
-    "news": ["C0..."], // content/news channels
-  },
-}
-```
-
-Tip: get a Slack channel ID from the channel’s **About** panel (bottom).
+`brew` resolves config in order: explicit `$1` path → `./textpresso.config.json` (cwd) →
+`~/.config/textpresso/config.json` (global). Tip: a Slack channel ID is in the channel’s
+**About** panel (bottom).
 
 ## Use
 
 ```
-/textpresso:textpresso
+/textpresso:brew
 ```
 
 Optionally pass a config path or lookback override:
 
 ```
-/textpresso:textpresso ./textpresso.config.json --lookback=yesterday
+/textpresso:brew ./textpresso.config.json --lookback=yesterday
 ```
 
 Then interrogate the result: `expand the PR queue`, `draft my standup message`,
@@ -70,7 +65,7 @@ Then interrogate the result: `expand the PR queue`, `draft my standup message`,
 ## Extending
 
 - **New channel** — add its ID to the right `slack` group. No code change.
-- **New source** — add a block to `skills/textpresso/references/sources.md` and a config key.
+- **New source** — add a block to `skills/brew/references/sources.md` and a config key.
   The gather step picks it up; the skill body stays untouched.
 
 ## Privacy
