@@ -1,7 +1,7 @@
 {
   "name": "textpresso",
   "description": "Your morning engineering briefing — yesterday's work, PR review queue, Slack signal, prod alerts and CI health in one standup-ready report. Read-only.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Jakub Czerwiński",
     "url": "https://github.com/kubaczerwinski77"
