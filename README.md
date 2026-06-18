@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg" />
-  <img alt="textpresso — your standup, brewed before you sit down" src="assets/hero-light.svg" width="720" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg?v=2" />
+  <img alt="textpresso — your standup, brewed before you sit down" src="assets/hero-light.svg?v=2" width="720" />
 </picture>
 
 <p>
