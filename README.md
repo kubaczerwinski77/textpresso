@@ -1,4 +1,18 @@
-# ☕ Textpresso
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg?v=2" />
+  <img alt="textpresso — your standup, brewed before you sit down" src="assets/hero-light.svg?v=2" width="720" />
+</picture>
+
+<p>
+  <img alt="release" src="https://img.shields.io/github/v/release/kubaczerwinski77/textpresso?color=FF4438&labelColor=1A1A1A&label=release" />
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-1A1A1A" />
+  <img alt="read-only" src="https://img.shields.io/badge/mode-read--only-FF4438?labelColor=1A1A1A" />
+  <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude_Code-plugin-1A1A1A" />
+</p>
+
+</div>
 
 Your morning shot of engineering signal. One command pulls **yesterday's work, the PR review
 queue, Slack signal, prod alerts and CI health** into a single standup-ready briefing — so you
