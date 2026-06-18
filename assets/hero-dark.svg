@@ -4,11 +4,13 @@
   <text x="44" y="116" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#F5F5F5">textpresso</text>
   <rect x="48" y="130" width="300" height="8" rx="4" fill="#FF4438"/>
   <text x="48" y="172" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#AAAAAA">your standup, brewed before you sit down</text>
-  <g>
-    <rect x="566" y="52" width="104" height="74" rx="20" fill="#FF4438"/>
-    <path d="M590 122 L590 150 L618 122 Z" fill="#FF4438"/>
-    <circle cx="592" cy="89" r="7.5" fill="#FFFFFF"/>
-    <circle cx="618" cy="89" r="7.5" fill="#FFFFFF"/>
-    <circle cx="644" cy="89" r="7.5" fill="#FFFFFF"/>
+  <g fill="#FF4438">
+    <rect x="588" y="78" width="72" height="50" rx="12"/>
+    <rect x="572" y="134" width="104" height="9" rx="4.5"/>
+  </g>
+  <path d="M662 90 a15 15 0 0 1 0 26" fill="none" stroke="#FF4438" stroke-width="8" stroke-linecap="round"/>
+  <g stroke="#FF4438" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M610 70 q-8 -11 0 -22"/>
+    <path d="M632 70 q-8 -11 0 -22"/>
   </g>
 </svg>
