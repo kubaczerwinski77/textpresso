@@ -22,13 +22,14 @@ tag, or a bare URL. If you genuinely can't build a link, state the thing plainly
 
 ## Layout
 
-Separate every section with a divider and an emoji + title header. Lead each section with ONE
+Separate sections with a single blank line and an emoji + **bold title** header — **no `---`,
+horizontal rules, or divider lines** (they read as noise in a terminal). Lead each section with ONE
 descriptive sentence, then tight items grouped by status — one line each.
 
+Header line — plain, no rules:
+
 ```
-──────────────────────────────────────────────
 ☕ TEXTPRESSO · Thursday 2026-06-18 · since Wed 06-17
-──────────────────────────────────────────────
 ```
 
 **🎯 STANDUP** — the lead. 2–3 sentences of plain talking points with links woven in, then:
