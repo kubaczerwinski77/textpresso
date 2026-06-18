@@ -3,6 +3,8 @@ name: brew
 description: Your morning engineering briefing. Pulls yesterday's work, the PR review queue, Slack signal, prod alerts and CI health into one standup-ready report. Read-only — gathers and synthesizes, never sends. Invoke explicitly each morning.
 disable-model-invocation: true
 argument-hint: "[--lookback=last-workday|yesterday|N-days]"
+model: sonnet
+effort: medium
 allowed-tools: Bash(git *), Bash(gh *), Bash(jq *), Bash(cat *), Bash(date *), mcp__*
 ---
 

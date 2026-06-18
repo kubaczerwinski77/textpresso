@@ -3,6 +3,8 @@ name: config
 description: Interactive setup for textpresso. Auto-derives what it can (GitHub handle, teammates, Jira account, Slack channels), asks for the rest, and writes a global config so /textpresso:brew works from any repo. Run once after install, or again to update.
 disable-model-invocation: true
 allowed-tools: Bash(gh *), Bash(git *), Bash(mkdir *), Bash(cat *), Write, mcp__*
+model: sonnet
+effort: medium
 ---
 
 # ☕ textpresso:config — setup
